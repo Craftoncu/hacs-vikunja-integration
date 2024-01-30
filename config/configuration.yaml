@@ -1,0 +1,9 @@
+# https://www.home-assistant.io/integrations/default_config/
+default_config:
+
+# https://www.home-assistant.io/integrations/logger/
+logger:
+  default: debug
+  logs:
+    custom_components.hacs_vikunja_integration: debug
+    homeassistant.components.websocket_api: debug

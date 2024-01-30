@@ -1,0 +1,18 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "description": "If you need help with the configuration have a look here: https://github.com/craftoncu/hacs-vikunja-integration",
+                "data": {
+                    "api_key": "API-Key",
+                    "api_url": "Vikunja-API Address"
+                }
+            }
+        },
+        "error": {
+            "auth": "Username/Password is wrong.",
+            "connection": "Unable to connect to the server.",
+            "unknown": "Unknown error occurred."
+        }
+    }
+}
