@@ -1,0 +1,12 @@
+{
+  "domain": "hacs_vikunja_integration",
+  "name": "HACS Vikunja Integration",
+  "codeowners": [
+    "@craftoncu"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/craftoncu/hacs-vikunja-integration",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/craftoncu/hacs-vikunja-integration/issues",
+  "version": "0.0.1"
+}
