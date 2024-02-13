@@ -27,7 +27,7 @@ jobs:
         shell: "bash"
         run: |
           cd "${{ github.workspace }}/custom_components/hacs_vikunja_integration"
-          zip integration_blueprint.zip -r ./
+          zip hacs_vikunja_integration.zip -r ./
 
       - name: "Upload the ZIP file to the release"
         uses: softprops/action-gh-release@v0.1.15
