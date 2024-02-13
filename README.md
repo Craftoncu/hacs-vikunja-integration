@@ -42,8 +42,8 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 
 ***
 
-[commits-shield]: https://img.shields.io/github/commit-activity/y/craftoncu/integration_blueprint.svg?style=for-the-badge
+[commits-shield]: https://img.shields.io/github/commit-activity/y/craftoncu/hacs-vikunja-integration.svg?style=for-the-badge
 [commits]: https://github.com/craftoncu/hacs-vikunja-integration/commits/main
 [license-shield]: https://img.shields.io/github/license/craftoncu/hacs-vikunja-integration.svg?style=for-the-badge
-[releases-shield]: https://img.shields.io/github/release/ludeeus/integration_blueprint.svg?style=for-the-badge
+[releases-shield]: https://img.shields.io/github/release/craftoncu/hacs-vikunja-integration.svg?style=for-the-badge
 [releases]: https://github.com/craftoncu/hacs-vikunja-integration/releases
