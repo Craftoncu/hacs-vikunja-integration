@@ -23,7 +23,7 @@ from .coordinator import VikunjaDataUpdateCoordinator
 SCAN_INTERVAL = timedelta(minutes=15)
 
 TODO_STATUS_MAP = {
-    "needsAction": TodoItemStatus.NEEDS_ACTION, # probably not_started
+    "needsAction": TodoItemStatus.NEEDS_ACTION,  # probably not_started
     "completed": TodoItemStatus.COMPLETED,
 }
 TODO_STATUS_MAP_INV = {v: k for k, v in TODO_STATUS_MAP.items()}
@@ -53,7 +53,7 @@ def _convert_api_item(item: dict[str, str]) -> TodoItem:
         due = datetime.fromisoformat(due_str).date()
     return TodoItem(
         summary=item["title"],
-        uid=item["id"],
+        uid=str(item["id"]),
         status=TODO_STATUS_MAP.get(
             item.get("status", ""),
             TodoItemStatus.NEEDS_ACTION,
@@ -61,6 +61,7 @@ def _convert_api_item(item: dict[str, str]) -> TodoItem:
         due=due,
         description=item.get("notes"),
     )
+
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
@@ -81,6 +82,7 @@ async def async_setup_entry(
         True,
     )
 
+
 class VikunjaTaskTodoListEntity(
     CoordinatorEntity[VikunjaDataUpdateCoordinator], TodoListEntity
 ):
@@ -88,12 +90,12 @@ class VikunjaTaskTodoListEntity(
 
     _attr_has_entity_name = True
     _attr_supported_features = (
-#        TodoListEntityFeature.CREATE_TODO_ITEM
-         TodoListEntityFeature.UPDATE_TODO_ITEM
-#        | TodoListEntityFeature.DELETE_TODO_ITEM
-#        | TodoListEntityFeature.MOVE_TODO_ITEM
-#        | TodoListEntityFeature.SET_DUE_DATE_ON_ITEM
-#        | TodoListEntityFeature.SET_DESCRIPTION_ON_ITEM
+        #        TodoListEntityFeature.CREATE_TODO_ITEM
+        TodoListEntityFeature.UPDATE_TODO_ITEM
+        #        | TodoListEntityFeature.DELETE_TODO_ITEM
+        #        | TodoListEntityFeature.MOVE_TODO_ITEM
+        #        | TodoListEntityFeature.SET_DUE_DATE_ON_ITEM
+        #        | TodoListEntityFeature.SET_DESCRIPTION_ON_ITEM
     )
 
     def __init__(
@@ -120,7 +122,6 @@ class VikunjaTaskTodoListEntity(
         """Update a To-do item."""
         uid: str = cast(str, item.uid)
         await self.coordinator.client.update_task(
-            self._project_id,
             uid,
             item.status == TodoItemStatus.COMPLETED,
         )
@@ -145,6 +146,7 @@ class VikunjaTaskTodoListEntity(
     #     """Re-order a To-do item."""
     #     await self.coordinator.api.move(self._task_list_id, uid, previous=previous_uid)
     #     await self.coordinator.async_refresh()
+
 
 # def _order_tasks(tasks: list[dict[str, Any]]) -> list[dict[str, Any]]:
 #     """Order the task items response.
