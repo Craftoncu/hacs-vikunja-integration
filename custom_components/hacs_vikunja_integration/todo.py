@@ -48,19 +48,26 @@ def _convert_todo_item(item: TodoItem) -> dict[str, str | None]:
 
 def _convert_api_item(item: dict[str, str]) -> TodoItem:
     """Convert tasks API items into a TodoItem."""
-    due: date | None = None
-    if (due_str := item.get("due")) is not None:
-        due = datetime.fromisoformat(due_str).date()
+
+
+    due: date | datetime | None = None
+    due_str = item.get("due_date")
+    if due_str and due_str != "0001-01-01T00:00:00Z": # due to vikunja response if no due date is set
+        try:
+            due = datetime.fromisoformat(due_str)
+        except ValueError:
+            due = None
+
+    status = TodoItemStatus.COMPLETED if item.get("done", False) else TodoItemStatus.NEEDS_ACTION
+
     return TodoItem(
         summary=item["title"],
         uid=str(item["id"]),
-        status=TODO_STATUS_MAP.get(
-            item.get("status", ""),
-            TodoItemStatus.NEEDS_ACTION,
-        ),
+        status=status,
         due=due,
-        description=item.get("notes"),
+        description=item["description"],
     )
+
 
 
 async def async_setup_entry(
