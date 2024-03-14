@@ -1,7 +1,7 @@
 {
-    "name": "craftoncu/hacs-vikunja-integration",
+    "name": "craftoncu/hacs_vikunja_integration",
     "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
-    "postCreateCommand": "scripts/setup",
+    "postCreateCommand": "chmod -R +x scripts/ && scripts/setup",
     "forwardPorts": [
         8123
     ],
