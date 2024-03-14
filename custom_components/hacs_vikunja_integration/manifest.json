@@ -8,5 +8,5 @@
   "documentation": "https://github.com/craftoncu/hacs-vikunja-integration",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/craftoncu/hacs-vikunja-integration/issues",
-  "version": "0.0.1"
+  "version": "0.0.3"
 }
